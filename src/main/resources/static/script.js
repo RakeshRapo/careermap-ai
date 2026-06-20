@@ -178,3 +178,52 @@ async function saveProfile() {
         alert("Failed to save profile");
     }
 };
+function logout() {
+
+    localStorage.removeItem("userId");
+
+    window.location.href = "index.html";
+}
+async function loginUser() {
+
+    try {
+
+        const loginData = {
+
+            email:
+                document.getElementById("loginEmail").value,
+
+            password:
+                document.getElementById("loginPassword").value
+        };
+
+        const response = await fetch(
+            "/api/auth/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(loginData)
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Login Failed");
+        }
+
+        const data = await response.json();
+
+        localStorage.setItem("userId", data.id);
+
+        alert("Welcome " + data.name);
+
+        window.location.href = "dashboard.html";
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Invalid Email or Password");
+    }
+}

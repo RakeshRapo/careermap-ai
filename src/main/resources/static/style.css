@@ -161,3 +161,16 @@ body{
         max-width:1400px;
         margin:auto;
     }
+    .navbar button{
+        background:#ef4444;
+        color:white;
+        border:none;
+        padding:8px 15px;
+        border-radius:6px;
+        margin-left:15px;
+        cursor:pointer;
+    }
+    
+    .navbar button:hover{
+        background:#dc2626;
+    }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.careermap.careermap_ai.ai.ResumeAgent;
+import com.careermap.careermap_ai.dto.LoginRequest;
 import com.careermap.careermap_ai.dto.ProfileRequest;
 import com.careermap.careermap_ai.dto.RegisterRequest;
 import com.careermap.careermap_ai.entity.User;
@@ -85,5 +86,13 @@ public String generateCareerRoadmap(
 @GetMapping("/user/{id}")
 public User getUser(@PathVariable Long id) {
     return userService.getUserById(id);
+}
+@PostMapping("/login")
+public User login(
+        @RequestBody LoginRequest request) {
+
+    return userService.login(
+            request.getEmail(),
+            request.getPassword());
 }
 }

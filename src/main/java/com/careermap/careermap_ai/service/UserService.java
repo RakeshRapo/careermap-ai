@@ -13,6 +13,7 @@ import com.careermap.careermap_ai.entity.User;
 import com.careermap.careermap_ai.entity.UserProfile;
 import com.careermap.careermap_ai.repository.UserProfileRepository;
 import com.careermap.careermap_ai.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -119,5 +120,16 @@ public String analyzeResume(Long userId) {
     
         return interviewAgent.generateQuestions(
                 user.getCareerGoal());
+    }
+    public User login(String email, String password) {
+
+        return userRepository.findAll()
+                .stream()
+                .filter(user ->
+                        user.getEmail().equals(email)
+                        && user.getPassword().equals(password))
+                .findFirst()
+                .orElseThrow(() ->
+                        new RuntimeException("Invalid Email or Password"));
     }
 }
