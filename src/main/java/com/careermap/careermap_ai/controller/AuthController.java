@@ -82,4 +82,8 @@ public String generateCareerRoadmap(
 
     return userService.generateCareerRoadmap(userId);
 }
+@GetMapping("/user/{id}")
+public User getUser(@PathVariable Long id) {
+    return userService.getUserById(id);
+}
 }

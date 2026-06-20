@@ -13,7 +13,6 @@ import com.careermap.careermap_ai.entity.User;
 import com.careermap.careermap_ai.entity.UserProfile;
 import com.careermap.careermap_ai.repository.UserProfileRepository;
 import com.careermap.careermap_ai.repository.UserRepository;
-import com.careermap.careermap_ai.ai.CareerAgent;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -49,7 +48,7 @@ public class UserService {
 
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
-    
+        
         UserProfile profile = UserProfile.builder()
                 .skills(request.getSkills())
                 .targetCompanies(request.getTargetCompanies())
@@ -62,10 +61,8 @@ public class UserService {
     }
     public String generateRoadmap(Long userId) {
 
-        UserProfile profile = userProfileRepository.findAll()
-                .stream()
-                .filter(p -> p.getUser().getId().equals(userId))
-                .findFirst()
+        UserProfile profile = userProfileRepository
+                .findByUserId(userId)
                 .orElseThrow(() ->
                         new RuntimeException("Profile not found"));
     
@@ -76,26 +73,44 @@ public class UserService {
                 profile.getDailyStudyHours()
         );
     }
-    public String analyzeResume(Long userId) {
-
+public String analyzeResume(Long userId) {
         UserProfile profile = userProfileRepository
-                .findById(userId)
+                .findByUserId(userId)
                 .orElseThrow(() ->
                         new RuntimeException("Profile not found"));
     
         return resumeAgent.analyzeResume(
                 profile.getSkills());
     }
+    
     public String generateDsaPlan(Long userId) {
 
         UserProfile profile = userProfileRepository
-                .findById(userId)
+                .findByUserId(userId)
                 .orElseThrow(() ->
                         new RuntimeException("Profile not found"));
     
         return dsaAgent.generatePlan(
                 profile.getCurrentLevel());
     }
+    
+    public String generateCareerRoadmap(Long userId) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
+    
+        UserProfile profile = userProfileRepository
+                .findByUserId(userId)
+                .orElseThrow(() ->
+                        new RuntimeException("Profile not found"));
+    
+        return careerAgent.generateCareerRoadmap(
+                user.getCareerGoal(),
+                profile.getSkills(),
+                profile.getCurrentLevel());
+    }
+    
     public String generateInterviewQuestions(Long userId) {
 
         User user = userRepository.findById(userId)
@@ -104,21 +119,5 @@ public class UserService {
     
         return interviewAgent.generateQuestions(
                 user.getCareerGoal());
-    }
-    public String generateCareerRoadmap(Long userId) {
-
-        User user = userRepository.findById(userId)
-                .orElseThrow(() ->
-                        new RuntimeException("User not found"));
-    
-        UserProfile profile = userProfileRepository
-                .findById(userId)
-                .orElseThrow(() ->
-                        new RuntimeException("Profile not found"));
-    
-        return careerAgent.generateCareerRoadmap(
-                user.getCareerGoal(),
-                profile.getSkills(),
-                profile.getCurrentLevel());
     }
 }

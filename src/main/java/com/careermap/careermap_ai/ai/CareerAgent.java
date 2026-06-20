@@ -5,47 +5,61 @@ import org.springframework.stereotype.Component;
 @Component
 public class CareerAgent {
 
+    public String generateRoadmap(
+            String skills,
+            String targetCompanies,
+            String level,
+            Integer studyHours) {
+
+        return """
+                Personalized Roadmap
+
+                Skills: %s
+                Target Companies: %s
+                Current Level: %s
+                Daily Study Hours: %d
+
+                Month 1:
+                - Strengthen DSA fundamentals
+                - Practice Java Collections
+
+                Month 2:
+                - Spring Boot
+                - REST APIs
+                - JDBC
+
+                Month 3:
+                - System Design Basics
+                - Mock Interviews
+                - Company-specific preparation
+                """.formatted(
+                        skills,
+                        targetCompanies,
+                        level,
+                        studyHours
+                );
+    }
+
     public String generateCareerRoadmap(
             String careerGoal,
             String skills,
             String level) {
 
         return """
-                Personalized Career Roadmap
+                Career Goal: %s
 
-                Career Goal:
-                %s
+                Skills: %s
+                Level: %s
 
-                Current Skills:
-                %s
-
-                Current Level:
-                %s
-
-                Phase 1:
-                - Strengthen Java
-                - Learn OOP
-                - Master Collections
-
-                Phase 2:
-                - DSA Practice
-                - LeetCode
-                - SQL
-
-                Phase 3:
-                - Spring Boot
-                - REST APIs
-                - PostgreSQL
-
-                Phase 4:
+                Recommended Path:
+                - Improve DSA
                 - Build Projects
-                - Resume Preparation
-                - Interview Preparation
-
-                Phase 5:
-                - Apply for Internships
-                - Apply for SDE Roles
-                """
-                .formatted(careerGoal, skills, level);
+                - Learn Backend Development
+                - Prepare for Interviews
+                """.formatted(
+                        careerGoal,
+                        skills,
+                        level
+                );
     }
-}
+}   
