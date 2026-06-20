@@ -8,20 +8,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.careermap.careermap_ai.dto.ProfileRequest;
 import com.careermap.careermap_ai.dto.RegisterRequest;
 import com.careermap.careermap_ai.entity.User;
-import com.careermap.careermap_ai.service.UserService;
-import com.careermap.careermap_ai.dto.ProfileRequest;
 import com.careermap.careermap_ai.entity.UserProfile;
-import lombok.RequiredArgsConstructor;
+import com.careermap.careermap_ai.service.GeminiService;
+import com.careermap.careermap_ai.service.UserService;
 
+import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
     private final UserService userService;
-
+    private final GeminiService geminiService;
     @PostMapping("/register")
     public User register(@RequestBody RegisterRequest request) {
         return userService.register(request);
@@ -45,6 +46,12 @@ public String generateRoadmap(
         @PathVariable Long userId) {
 
     return userService.generateRoadmap(userId);
+}
+@GetMapping("/gemini")
+public String geminiTest() {
+
+    return geminiService.generateRoadmap(
+            "Create a 3 month roadmap for a Java Spring Boot developer");
 }
 
     
