@@ -106,10 +106,11 @@ public String analyzeResume(Long userId) {
                 .orElseThrow(() ->
                         new RuntimeException("Profile not found"));
     
-        return careerAgent.generateCareerRoadmap(
-                user.getCareerGoal(),
-                profile.getSkills(),
-                profile.getCurrentLevel());
+                        return careerAgent.generateCareerRoadmap(
+                                user.getCareerGoal(),
+                                profile.getSkills(),
+                                profile.getCurrentLevel(),
+                                user.getYear());
     }
     
     public String generateInterviewQuestions(Long userId) {

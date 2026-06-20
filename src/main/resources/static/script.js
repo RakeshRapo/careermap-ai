@@ -62,7 +62,11 @@ async function loadResume() {
 
     const data = await response.text();
 
-    document.getElementById("resume").innerText = data;
+    const box = document.getElementById("resume");
+
+    box.innerText = data;
+
+    box.style.display = "block";
 }
 
 async function loadDsa() {
@@ -74,7 +78,11 @@ async function loadDsa() {
 
     const data = await response.text();
 
-    document.getElementById("dsa").innerText = data;
+    const box = document.getElementById("dsa");
+
+    box.innerText = data;
+
+    box.style.display = "block";
 }
 
 async function loadInterview() {
@@ -86,19 +94,48 @@ async function loadInterview() {
 
     const data = await response.text();
 
-    document.getElementById("interview").innerText = data;
+    const box = document.getElementById("interview");
+
+    box.innerText = data;
+
+    box.style.display = "block";
 }
 
 async function loadCareer() {
 
     const userId = getUserId();
 
-    const response =
-        await fetch(`/api/auth/career-roadmap/${userId}`);
+    const roadmapBox =
+        document.getElementById("career");
 
-    const data = await response.text();
+        roadmapBox.innerHTML = `
+        Generating Your AI Career Roadmap...
+        
+        Analyzing:
+        Academic Year
+        Career Goal
+        Skills
+        Current Level
+        
+        Please wait...
+        `;
 
-    document.getElementById("career").innerText = data;
+    try {
+
+        const response =
+            await fetch(`/api/auth/career-roadmap/${userId}`);
+
+        const data = await response.text();
+
+        roadmapBox.innerText = data;
+
+    } catch (error) {
+
+        roadmapBox.innerText =
+            "❌ Failed to generate roadmap. Please try again.";
+
+        console.error(error);
+    }
 }
 async function loadUserName() {
 
@@ -114,21 +151,26 @@ async function loadUserName() {
 }
 window.onload = function() {
 
-    if (
-        window.location.pathname.includes("dashboard.html")
-    ) {
+    const page =
+        window.location.pathname;
 
-        const userId = getUserId();
-
-        if (!userId) {
-            window.location.href = "register.html";
-            return;
-        }
-
+    if (page.includes("dashboard.html")) {
         loadUserName();
+    }
+
+    if (page.includes("resume.html")) {
         loadResume();
+    }
+
+    if (page.includes("dsa.html")) {
         loadDsa();
+    }
+
+    if (page.includes("interview.html")) {
         loadInterview();
+    }
+
+    if (page.includes("roadmap.html")) {
         loadCareer();
     }
 }

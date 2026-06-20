@@ -2,64 +2,83 @@ package com.careermap.careermap_ai.ai;
 
 import org.springframework.stereotype.Component;
 
+import com.careermap.careermap_ai.service.GeminiService;
+
+import lombok.RequiredArgsConstructor;
+
 @Component
+@RequiredArgsConstructor
 public class CareerAgent {
 
+    private final GeminiService geminiService;
+
     public String generateRoadmap(
-            String skills,
-            String targetCompanies,
-            String level,
-            Integer studyHours) {
+        String skills,
+        String targetCompanies,
+        String level,
+        Integer studyHours) {
 
-        return """
-                Personalized Roadmap
+    String prompt = """
+            Create a personalized career roadmap.
 
-                Skills: %s
-                Target Companies: %s
-                Current Level: %s
-                Daily Study Hours: %d
+            Skills: %s
+            Target Companies: %s
+            Current Level: %s
+            Daily Study Hours: %d
 
-                Month 1:
-                - Strengthen DSA fundamentals
-                - Practice Java Collections
+            Create a detailed 3-month roadmap.
+            Include:
+            - Weekly goals
+            - Technologies to learn
+            - DSA preparation
+            - Projects to build
+            - Interview preparation
+            """.formatted(
+                    skills,
+                    targetCompanies,
+                    level,
+                    studyHours
+            );
 
-                Month 2:
-                - Spring Boot
-                - REST APIs
-                - JDBC
+    return geminiService.generateRoadmap(prompt);
+}
 
-                Month 3:
-                - System Design Basics
-                - Mock Interviews
-                - Company-specific preparation
-                """.formatted(
-                        skills,
-                        targetCompanies,
-                        level,
-                        studyHours
-                );
-    }
+public String generateCareerRoadmap(
+        String careerGoal,
+        String skills,
+        String level,   
+        String year) {
 
-    public String generateCareerRoadmap(
-            String careerGoal,
-            String skills,
-            String level) {
+                String prompt = """
+                        Create a personalized career roadmap.
+                        
+                        Current Academic Year: %s
+                        Career Goal: %s
+                        Skills: %s
+                        Current Level: %s
+                        
+                        Generate a roadmap that lasts until graduation.
+                        
+                        If the student is:
+                        - 1st Year → roadmap for 4 years
+                        - 2nd Year → roadmap for 3 years
+                        - 3rd Year → roadmap for 2 years
+                        - Final Year → roadmap for remaining months
+                        
+                        Keep it concise.
+                        
+                        Return:
+                        🎯 Goal
+                        📚 Skills
+                        🛠 Projects
+                        📅 Timeline Until Graduation
+                        """.formatted(
+                                year,
+                                careerGoal,
+                                skills,
+                                level
+                        );
 
-        return """
-                Career Goal: %s
-
-                Skills: %s
-                Level: %s
-
-                Recommended Path:
-                - Improve DSA
-                - Build Projects
-                - Learn Backend Development
-                - Prepare for Interviews
-                """.formatted(
-                        careerGoal,
-                        skills,
-                        level
-                );
-    }
+    return geminiService.generateRoadmap(prompt);
+}
 }   

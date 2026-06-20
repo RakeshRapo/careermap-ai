@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.careermap.careermap_ai.config.GeminiConfig;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +25,7 @@ public class GeminiService {
     public String generateRoadmap(String prompt) {
 
         String url =
-                "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="
+                "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
                         + geminiConfig.getApiKey();
     
         HttpHeaders headers = new HttpHeaders();
@@ -50,7 +52,19 @@ public class GeminiService {
                             request,
                             String.class);
     
-            return response.getBody();
+                            ObjectMapper mapper = new ObjectMapper();
+
+                            JsonNode root =
+                                    mapper.readTree(response.getBody());
+                            
+                            return root
+                                    .path("candidates")
+                                    .get(0)
+                                    .path("content")
+                                    .path("parts")
+                                    .get(0)
+                                    .path("text")
+                                    .asText();
     
         } catch (Exception e) {
     

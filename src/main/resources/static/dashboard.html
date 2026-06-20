@@ -3,8 +3,16 @@
 <head>
     <title>CareerMap Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="hero">
+        <h1>CareerMap AI</h1>
+        <p>AI Powered Career Guidance Platform</p>
+    </div>
     <div class="navbar">
         <h2>CareerMap AI</h2>
         <div>
@@ -43,23 +51,36 @@
 
             <div class="card">
                 <h2>Resume Analysis</h2>
-                <pre id="resume"></pre>
+                <p>Analyze your resume and skills.</p>
+                <button onclick="window.location.href='resume.html'">
+                    Open
+                </button>
             </div>
-
+        
             <div class="card">
                 <h2>DSA Plan</h2>
-                <pre id="dsa"></pre>
+                <p>View your coding roadmap.</p>
+                <button onclick="window.location.href='dsa.html'">
+                    Open
+                </button>
             </div>
-
+        
             <div class="card">
                 <h2>Interview Questions</h2>
-                <pre id="interview"></pre>
+                <p>Prepare for interviews.</p>
+                <button onclick="window.location.href='interview.html'">
+                    Open
+                </button>
             </div>
-
+        
             <div class="card">
                 <h2>Career Roadmap</h2>
-                <pre id="career"></pre>
+                <p>AI-powered roadmap.</p>
+                <button onclick="window.location.href='roadmap.html'">
+                    Open
+                </button>
             </div>
+        
         </div>
     </div>
     <script src="script.js"></script>
