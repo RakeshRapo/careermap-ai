@@ -5,48 +5,47 @@ import org.springframework.stereotype.Component;
 @Component
 public class CareerAgent {
 
-    public String generateRoadmap(
+    public String generateCareerRoadmap(
+            String careerGoal,
             String skills,
-            String targetCompanies,
-            String level,
-            Integer studyHours) {
+            String level) {
 
         return """
-                Career Roadmap
+                Personalized Career Roadmap
 
-                Current Skills: %s
-                Target Companies: %s
-                Current Level: %s
-                Daily Study Hours: %d
+                Career Goal:
+                %s
 
-                Suggested Plan:
+                Current Skills:
+                %s
 
-                Month 1:
-                - Java Fundamentals
-                - OOP
+                Current Level:
+                %s
 
-                Month 2:
-                - DSA Arrays
-                - Strings
+                Phase 1:
+                - Strengthen Java
+                - Learn OOP
+                - Master Collections
 
-                Month 3:
+                Phase 2:
+                - DSA Practice
+                - LeetCode
+                - SQL
+
+                Phase 3:
                 - Spring Boot
+                - REST APIs
                 - PostgreSQL
 
-                Month 4:
-                - Projects
-                - Resume Building
+                Phase 4:
+                - Build Projects
+                - Resume Preparation
+                - Interview Preparation
 
-                Month 5:
-                - Mock Interviews
-
-                Month 6:
-                - Company Preparation
+                Phase 5:
+                - Apply for Internships
+                - Apply for SDE Roles
                 """
-                .formatted(
-                        skills,
-                        targetCompanies,
-                        level,
-                        studyHours);
+                .formatted(careerGoal, skills, level);
     }
 }

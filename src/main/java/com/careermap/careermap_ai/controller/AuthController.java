@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.careermap.careermap_ai.ai.ResumeAgent;
 import com.careermap.careermap_ai.dto.ProfileRequest;
 import com.careermap.careermap_ai.dto.RegisterRequest;
 import com.careermap.careermap_ai.entity.User;
@@ -20,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
-
+    private final ResumeAgent resumeAgent;
     private final UserService userService;
     private final GeminiService geminiService;
     @PostMapping("/register")
@@ -53,6 +54,32 @@ public String geminiTest() {
     return geminiService.generateRoadmap(
             "Create a 3 month roadmap for a Java Spring Boot developer");
 }
+@GetMapping("/resume/analyze")
+public String analyzeResume() {
 
-    
+    return resumeAgent.analyzeResume(
+            "Java Spring Boot SQL AWS");
+}
+@GetMapping("/resume/analyze/{userId}")
+public String analyzeResume(@PathVariable Long userId) {
+    return userService.analyzeResume(userId);
+}
+@GetMapping("/dsa-plan/{userId}")
+public String generateDsaPlan(
+        @PathVariable Long userId) {
+
+    return userService.generateDsaPlan(userId);
+}
+@GetMapping("/interview/{userId}")
+public String generateInterviewQuestions(
+        @PathVariable Long userId) {
+
+    return userService.generateInterviewQuestions(userId);
+}
+@GetMapping("/career-roadmap/{userId}")
+public String generateCareerRoadmap(
+        @PathVariable Long userId) {
+
+    return userService.generateCareerRoadmap(userId);
+}
 }
