@@ -1,33 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Resume Analysis</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Analysis — CareerMap AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
-        <h1>Resume Analysis</h1>
-        <p>Improve your resume with smart recommendations</p>
-    </div>
-<div class="navbar">
-    <h2>CareerMap AI</h2>
-    <a href="dashboard.html">Dashboard</a>
-</div>
-<button onclick="window.location.href='dashboard.html'">
-    ← Back to Dashboard
-</button>
-<div class="container">
-    <div class="card">
-        <h1>Resume Analysis</h1>
-        <pre id="resume"></pre>
-    </div>
-</div>
 
-<script src="script.js"></script>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+  </nav>
 
+  <!-- Hero -->
+  <section class="hero hero-sub">
+    <div class="hero-badge">📄 Resume Agent</div>
+    <h1>Resume Analysis</h1>
+    <p>Get AI-powered feedback and a score to improve your resume</p>
+  </section>
+
+  <a href="dashboard.html" class="btn-back">← Back to Dashboard</a>
+
+  <div class="container" style="padding-top:0;">
+    <div class="card" style="max-width:760px; margin:0 auto;">
+
+      <!-- Upload area -->
+      <div class="file-upload-area" onclick="document.getElementById('resumeFile').click()">
+        <div class="file-upload-icon">📎</div>
+        <h3>Drop your resume here</h3>
+        <p>Supports PDF — click to browse or drag and drop</p>
+        <input type="file" id="resumeFile" accept=".pdf" style="display:none;" onchange="updateFileName(this)">
+      </div>
+
+      <div id="fileChosen" style="font-size:13px; color:var(--text-secondary); margin-bottom:14px; display:none;">
+        ✅ <span id="fileName"></span>
+      </div>
+
+      <button class="btn btn-primary" onclick="uploadResume()" style="width:100%; justify-content:center; font-size:15px; padding:12px;">
+        Analyze Resume →
+      </button>
+
+      <!-- Upload result -->
+      <pre id="resumeResult" style="display:none;"></pre>
+
+      <!-- Divider -->
+      <div style="border-top:1px solid var(--border); margin:28px 0;"></div>
+
+      <!-- Saved analysis -->
+      <p class="section-heading">📊 Your AI Analysis</p>
+      <div id="loadingResume" class="loading-state">
+        <div class="spinner"></div>
+        <span>Loading your resume analysis…</span>
+      </div>
+      <pre id="resume" style="display:none;"></pre>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function updateFileName(input) {
+      if (input.files[0]) {
+        document.getElementById('fileName').textContent = input.files[0].name;
+        document.getElementById('fileChosen').style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>

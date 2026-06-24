@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Interview Questions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Prep — CareerMap AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
-        <h1>Interview Preparation</h1>
-        <p>Practice questions tailored to your career goal</p>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <button class="btn-logout" onclick="logout()">Sign Out</button>
     </div>
-    <div class="navbar">
-        <h2>CareerMap AI</h2>
+  </nav>
 
-        <div>
-            <a href="dashboard.html">Dashboard</a>
-            <button onclick="logout()">Logout</button>
-        </div>
+  <!-- Hero -->
+  <section class="hero hero-sub" style="background: linear-gradient(135deg, #0F172A 0%, #78350f 100%);">
+    <div class="hero-badge" style="border-color:rgba(245,158,11,0.4); color:#fcd34d; background:rgba(245,158,11,0.1);">🎯 Interview Agent</div>
+    <h1>Interview Preparation</h1>
+    <p>AI-curated questions tailored to your career goal and target companies</p>
+  </section>
+
+  <a href="dashboard.html" class="btn-back">← Back to Dashboard</a>
+
+  <div class="container" style="padding-top:0;">
+    <div class="card" style="max-width:760px; margin:0 auto;">
+
+      <!-- Info strip -->
+      <div style="background:var(--amber-light); border-radius:var(--radius-md); padding:14px 18px; margin-bottom:24px; display:flex; align-items:center; gap:12px;">
+        <span style="font-size:20px;">💡</span>
+        <p style="font-size:13px; color:var(--text-secondary); margin:0;">Questions are generated based on your profile — career goal, skills, and target companies.</p>
+      </div>
+
+      <p class="section-heading">📝 Your Interview Questions</p>
+
+      <div id="loadingInterview" class="loading-state">
+        <div class="spinner" style="border-top-color:var(--amber);"></div>
+        <span>Loading your interview questions…</span>
+      </div>
+      <pre id="interview" style="display:none; border-left-color:var(--amber);"></pre>
+
     </div>
-    <button onclick="window.location.href='dashboard.html'">
-        ← Back to Dashboard
-    </button>
-    <div class="container">
+  </div>
 
-        <div class="card">
-
-            <h1>Interview Questions</h1>
-
-            <p>
-                Personalized interview questions based on your career goal.
-            </p>
-
-            <pre id="interview"></pre>
-
-        </div>
-
-    </div>
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

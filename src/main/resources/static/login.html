@@ -1,41 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login - CareerMap AI</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — CareerMap AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="background:var(--bg); min-height:100vh; display:flex; flex-direction:column;">
 
-    <div class="hero">
-        <h1>CareerMap AI</h1>
-        <p>Login to continue your career journey</p>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="register.html">Create account</a>
     </div>
+  </nav>
 
-    <div class="card" style="max-width:400px;margin:30px auto;">
+  <!-- Form -->
+  <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px;">
+    <div style="width:100%; max-width:440px;">
 
-        <input type="email"
-               id="loginEmail"
-               placeholder="Email">
+      <div style="text-align:center; margin-bottom:32px;">
+        <div style="width:52px; height:52px; background:var(--indigo); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:22px; margin:0 auto 16px;">🔐</div>
+        <h1 style="font-size:1.6rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:6px;">Welcome back</h1>
+        <p style="color:var(--text-secondary); font-size:14px;">Sign in to continue your career journey</p>
+      </div>
 
-        <br><br>
+      <div class="form-card">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email address</label>
+          <input class="form-input" type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email">
+        </div>
 
-        <input type="password"
-               id="loginPassword"
-               placeholder="Password">
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input class="form-input" type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password">
+        </div>
 
-        <br><br>
+        <button class="btn btn-primary" onclick="loginUser()" style="width:100%; justify-content:center; font-size:15px; padding:12px; margin-top:8px;">Sign In →</button>
 
-        <button onclick="loginUser()">
-            Login
-        </button>
+        <div class="form-footer" style="margin-top:16px;">
+          Don't have an account? <a href="register.html">Create one free</a>
+        </div>
+      </div>
 
     </div>
+  </div>
 
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

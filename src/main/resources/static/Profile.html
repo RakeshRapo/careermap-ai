@@ -1,53 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Profile Setup - CareerMap AI</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Setup — CareerMap AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="background:var(--bg); min-height:100vh; display:flex; flex-direction:column;">
 
-    <div class="hero">
-        <h1>Complete Your Profile</h1>
-        <p>Help us personalize your career roadmap</p>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+  </nav>
+
+  <!-- Form -->
+  <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px;">
+    <div style="width:100%; max-width:520px;">
+
+      <div style="text-align:center; margin-bottom:32px;">
+        <div style="width:52px; height:52px; background:var(--mint); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:22px; margin:0 auto 16px;">⚙️</div>
+        <h1 style="font-size:1.6rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:6px;">Complete your profile</h1>
+        <p style="color:var(--text-secondary); font-size:14px;">This helps us personalize your AI roadmap, DSA plan, and interview prep.</p>
+      </div>
+
+      <!-- Progress dots -->
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:28px;">
+        <div style="width:28px;height:5px;border-radius:100px;background:var(--indigo);"></div>
+        <div style="width:28px;height:5px;border-radius:100px;background:var(--indigo);"></div>
+        <div style="width:28px;height:5px;border-radius:100px;background:var(--border);"></div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-group">
+          <label class="form-label" for="skills">Your skills</label>
+          <input class="form-input" type="text" id="skills" placeholder="Java, Spring Boot, Python, SQL, …">
+          <p style="color:var(--text-muted);font-size:12px;margin-top:5px;">Separate skills with commas</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="targetCompanies">Target companies</label>
+          <input class="form-input" type="text" id="targetCompanies" placeholder="Google, Amazon, Microsoft, …">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="dailyStudyHours">Daily study hours</label>
+            <input class="form-input" type="number" id="dailyStudyHours" placeholder="e.g. 3" min="1" max="12">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="currentLevel">Current level</label>
+            <input class="form-input" type="text" id="currentLevel" placeholder="Beginner / Intermediate">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="saveProfile()" style="width:100%; justify-content:center; font-size:15px; padding:12px; margin-top:22px;">Save & Go to Dashboard →</button>
+      </div>
+
     </div>
+  </div>
 
-    <div class="card" style="max-width:500px;margin:30px auto;">
-
-        <input type="text"
-               id="skills"
-               placeholder="Skills (Java, Spring Boot)">
-
-        <br><br>
-
-        <input type="text"
-               id="targetCompanies"
-               placeholder="Target Companies">
-
-        <br><br>
-
-        <input type="number"
-               id="dailyStudyHours"
-               placeholder="Daily Study Hours">
-
-        <br><br>
-
-        <input type="text"
-               id="currentLevel"
-               placeholder="Current Level">
-
-        <br><br>
-
-        <button onclick="saveProfile()">
-            Save Profile
-        </button>
-
-    </div>
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

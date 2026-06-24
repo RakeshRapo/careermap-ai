@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Resume Analysis</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Roadmap — CareerMap AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
-        <h1>Career Roadmap</h1>
-        <p>Your personalized AI-powered roadmap</p>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="dashboard.html">Dashboard</a>
     </div>
-<div class="navbar">
-    <h2>CareerMap AI</h2>
-    <a href="dashboard.html">Dashboard</a>
-</div>
-<button onclick="window.location.href='dashboard.html'">
-    ← Back to Dashboard
-</button>
-<div class="container">
-    <div class="card">
+  </nav>
 
-        <h1>Career Roadmap</h1>
-    
-        <p>Personalized roadmap based on your profile.</p>
-    
-        <pre id="career">
-    Click Generate Roadmap to begin.
-        </pre>
-    
+  <!-- Hero -->
+  <section class="hero hero-sub" style="background: linear-gradient(135deg, #0F172A 0%, #0c4a6e 100%);">
+    <div class="hero-badge" style="border-color:rgba(14,165,233,0.4); color:#7dd3fc; background:rgba(14,165,233,0.1);">🗺️ Career Agent</div>
+    <h1>Career Roadmap</h1>
+    <p>Your AI-generated, step-by-step path to your dream role</p>
+  </section>
+
+  <a href="dashboard.html" class="btn-back">← Back to Dashboard</a>
+
+  <div class="container" style="padding-top:0;">
+    <div class="card" style="max-width:760px; margin:0 auto;">
+
+      <div style="background:var(--sky-light); border-radius:var(--radius-md); padding:14px 18px; margin-bottom:24px; display:flex; align-items:center; gap:12px;">
+        <span style="font-size:20px;">🤖</span>
+        <p style="font-size:13px; color:var(--text-secondary); margin:0;">Your roadmap is generated based on your profile — skills, academic year, career goal, and current level.</p>
+      </div>
+
+      <p class="section-heading">🗺️ Your Personalized Roadmap</p>
+
+      <div id="loadingCareer" class="loading-state">
+        <div class="spinner" style="border-top-color:var(--sky);"></div>
+        <p style="text-align:center; margin-top:8px; font-size:13px; color:var(--text-muted);">Analyzing your profile and generating your roadmap…</p>
+      </div>
+      <pre id="career" style="display:none; border-left-color:var(--sky);"></pre>
+
     </div>
-</div>
+  </div>
 
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

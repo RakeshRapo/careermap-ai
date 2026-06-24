@@ -1,61 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CareerMap AI</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerMap AI — Build Your Dream Career</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="hero">
-        <h1>CareerMap AI </h1>
-    
-        <h2>Build Your Dream Career with AI</h2>
-    
-        <p>
-            Personalized Roadmaps, DSA Plans,
-            Resume Analysis and Interview Preparation
-        </p>
-    
-        <a href="register.html">
-            <button>Get Started</button>
-        </a>
-    
-        <a href="dashboard.html">
-            <button>Dashboard</button>
-        </a>
-        <a href="login.html">
-            <button>Login</button>
-        </a>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="login.html">Login</a>
+      <a href="register.html" class="btn btn-primary" style="font-size:13px; padding:7px 18px;">Get Started →</a>
     </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" style="padding: 96px 40px 100px;">
+    <div class="hero-badge">✦ AI-Powered Career Guidance</div>
+    <h1>Build Your <span class="accent">Dream Career</span><br>with AI</h1>
+    <p>Personalized roadmaps, DSA plans, resume analysis, and interview prep — all powered by AI, all in one place.</p>
+    <div class="hero-actions">
+      <a href="register.html" class="btn btn-primary" style="font-size:15px; padding:12px 28px;">Get Started Free →</a>
+      <a href="login.html" class="btn btn-outline" style="font-size:15px; padding:12px 28px;">Sign In</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <div class="container" style="padding-top: 48px;">
+    <p class="section-heading" style="justify-content:center; margin-bottom:8px; color: var(--text-muted); font-size:12px; text-transform:uppercase; letter-spacing:0.08em;">Everything you need to land your dream job</p>
+    <h2 style="text-align:center; font-size:1.6rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:36px; color:var(--text-primary);">Four AI Agents. One Platform.</h2>
 
     <div class="features">
-        <div class="card">
-            <h2>Resume Agent</h2>
-            <p>
-                Analyze resumes and receive
-                personalized improvement suggestions.
-            </p>
-        </div>
 
-        <div class="card">
-            <h2>DSA Agent</h2>
-            <p>Personalized coding roadmap.</p>
-        </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: var(--indigo-light);">📄</div>
+        <h2>Resume Agent</h2>
+        <p>Upload your resume and get instant AI-powered analysis with personalized improvement suggestions to stand out to recruiters.</p>
+      </div>
 
-        <div class="card">
-            <h2>Interview Agent</h2>
-            <p>Practice interview questions.</p>
-        </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: var(--mint-light);">💻</div>
+        <h2>DSA Agent</h2>
+        <p>A structured, personalized Data Structures & Algorithms roadmap built around your current level, goals, and available time.</p>
+      </div>
 
-        <div class="card">
-            <h2>Career Agent</h2>
-            <p>Generate career roadmaps.</p>
-        </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: var(--amber-light);">🎯</div>
+        <h2>Interview Agent</h2>
+        <p>Practice with AI-curated interview questions tailored to your target companies and career goals.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background: var(--sky-light);">🗺️</div>
+        <h2>Career Agent</h2>
+        <p>Generate a complete, step-by-step career roadmap based on your skills, experience, and target role.</p>
+      </div>
+
     </div>
+
+    <!-- CTA -->
+    <div style="text-align:center; margin-top:56px; padding:48px 24px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-xl);">
+      <h2 style="font-size:1.5rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:10px;">Ready to map your career?</h2>
+      <p style="color:var(--text-secondary); margin-bottom:24px; font-size:15px;">Join thousands of students and professionals leveling up with CareerMap AI.</p>
+      <a href="register.html" class="btn btn-primary" style="font-size:15px; padding:12px 32px;">Create Free Account →</a>
+    </div>
+  </div>
 
 </body>
 </html>

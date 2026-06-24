@@ -1,89 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CareerMap Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — CareerMap AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
-        <h1>CareerMap AI</h1>
-        <p>AI Powered Career Guidance Platform</p>
-    </div>
-    <div class="navbar">
-        <h2>CareerMap AI</h2>
-        <div>
-            <a href="index.html">Home</a>
-            <button onclick="logout()">Logout</button>
-        </div>
-    </div>
-    <div class="container">
-        <div class="welcome-card">
-            <h2>Welcome, <span id="welcomeName"></span> </h2>
-            <p>Track your career journey with AI-powered guidance.</p>
-        </div>
-        <div class="stats">
-            <div class="stat-card">
-                <h3>Resume Score</h3>
-                <p>90%</p>
-            </div>
-    
-            <div class="stat-card">
-                <h3>DSA Plan</h3>
-                <p>30 Days</p>
-            </div>
-    
-            <div class="stat-card">
-                <h3>Interview Prep</h3>
-                <p>10 Questions</p>
-            </div>
-    
-            <div class="stat-card">
-                <h3>Roadmap</h3>
-                <p>Active</p>
-            </div>
-    
-        </div>
-        <div class="features">
 
-            <div class="card">
-                <h2>Resume Analysis</h2>
-                <p>Analyze your resume and skills.</p>
-                <button onclick="window.location.href='resume.html'">
-                    Open
-                </button>
-            </div>
-        
-            <div class="card">
-                <h2>DSA Plan</h2>
-                <p>View your coding roadmap.</p>
-                <button onclick="window.location.href='dsa.html'">
-                    Open
-                </button>
-            </div>
-        
-            <div class="card">
-                <h2>Interview Questions</h2>
-                <p>Prepare for interviews.</p>
-                <button onclick="window.location.href='interview.html'">
-                    Open
-                </button>
-            </div>
-        
-            <div class="card">
-                <h2>Career Roadmap</h2>
-                <p>AI-powered roadmap.</p>
-                <button onclick="window.location.href='roadmap.html'">
-                    Open
-                </button>
-            </div>
-        
-        </div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="index.html">Home</a>
+      <button class="btn-logout" onclick="logout()">Sign Out</button>
     </div>
-    <script src="script.js"></script>
+  </nav>
 
+  <!-- Hero sub -->
+  <section class="hero hero-sub">
+    <div class="hero-badge">✦ Your Career Hub</div>
+    <h1>Dashboard</h1>
+    <p>Track your progress and access all your AI-powered tools</p>
+  </section>
+
+  <div class="container">
+
+    <!-- Welcome card -->
+    <div class="welcome-card">
+      <h2>Welcome back, <span id="welcomeName">there</span> 👋</h2>
+      <p>Your AI career journey is in progress. Keep pushing forward.</p>
+    </div>
+
+    <!-- Stats -->
+    <p class="section-heading">📊 Your Progress</p>
+    <div class="stats" style="margin-bottom: 32px;">
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background:var(--indigo-light);">📄</div>
+        <div class="stat-body">
+          <h3>Resume Score</h3>
+          <p style="color:var(--indigo);">90%</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background:var(--mint-light);">💻</div>
+        <div class="stat-body">
+          <h3>DSA Plan</h3>
+          <p style="color:var(--mint);">30 Days</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background:var(--amber-light);">🎯</div>
+        <div class="stat-body">
+          <h3>Interview Prep</h3>
+          <p style="color:var(--amber);">10 Qs</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background:var(--sky-light);">🗺️</div>
+        <div class="stat-body">
+          <h3>Roadmap</h3>
+          <p style="color:var(--sky);">Active</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tool cards -->
+    <p class="section-heading">⚡ AI Tools</p>
+    <div class="tools-grid">
+
+      <div class="tool-card" onclick="window.location.href='resume.html'">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:var(--indigo-light);">📄</div>
+          <h2>Resume Analysis</h2>
+        </div>
+        <p>Upload your resume and get AI-powered feedback, scoring, and suggestions to help you stand out.</p>
+        <button class="btn btn-primary" style="width:100%; justify-content:center;">Open Tool →</button>
+      </div>
+
+      <div class="tool-card" onclick="window.location.href='dsa.html'">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:var(--mint-light);">💻</div>
+          <h2>DSA Plan</h2>
+        </div>
+        <p>Your personalized Data Structures & Algorithms roadmap, structured to your pace and career goal.</p>
+        <button class="btn btn-primary" style="width:100%; justify-content:center; background:var(--mint);">Open Tool →</button>
+      </div>
+
+      <div class="tool-card" onclick="window.location.href='interview.html'">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:var(--amber-light);">🎯</div>
+          <h2>Interview Questions</h2>
+        </div>
+        <p>Practice with AI-generated interview questions tailored to your career goal and target companies.</p>
+        <button class="btn btn-primary" style="width:100%; justify-content:center; background:var(--amber);">Open Tool →</button>
+      </div>
+
+      <div class="tool-card" onclick="window.location.href='roadmap.html'">
+        <div class="tool-card-header">
+          <div class="tool-icon" style="background:var(--sky-light);">🗺️</div>
+          <h2>Career Roadmap</h2>
+        </div>
+        <p>AI-generated step-by-step roadmap built around your skills, experience, and target role.</p>
+        <button class="btn btn-primary" style="width:100%; justify-content:center; background:var(--sky);">Open Tool →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

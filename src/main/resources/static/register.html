@@ -1,45 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Register - CareerMap AI</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — CareerMap AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="background:var(--bg); min-height:100vh; display:flex; flex-direction:column;">
 
-    <div class="hero">
-        <h1>CareerMap AI </h1>
-        <p>Create Your Career Journey</p>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <div class="navbar-logo">C</div>
+      <span class="navbar-title">CareerMap AI</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="login.html">Sign in</a>
     </div>
+  </nav>
 
-    <div class="card" style="margin:30px auto; width:400px;">
-        <h2>Create Account</h2>
+  <!-- Form -->
+  <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 24px;">
+    <div style="width:100%; max-width:480px;">
 
-<p>
-    Get personalized roadmaps, DSA plans,
-    resume analysis and interview preparation.
-</p>
-        <input type="text" id="name" placeholder="Name"><br><br>
+      <div style="text-align:center; margin-bottom:32px;">
+        <div style="width:52px; height:52px; background:var(--indigo); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:22px; margin:0 auto 16px;">🚀</div>
+        <h1 style="font-size:1.6rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:6px;">Start your journey</h1>
+        <p style="color:var(--text-secondary); font-size:14px;">Get personalized roadmaps, DSA plans, resume analysis, and interview prep.</p>
+      </div>
 
-        <input type="email" id="email" placeholder="Email"><br><br>
+      <div class="form-card">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="name">Full name</label>
+            <input class="form-input" type="text" id="name" placeholder="Arjun Sharma" autocomplete="name">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="year">Academic year</label>
+            <input class="form-input" type="text" id="year" placeholder="e.g. 3rd Year">
+          </div>
+        </div>
 
-        <input type="password" id="password" placeholder="Password"><br><br>
+        <div class="form-group" style="margin-top:14px;">
+          <label class="form-label" for="email">Email address</label>
+          <input class="form-input" type="email" id="email" placeholder="you@example.com" autocomplete="email">
+        </div>
 
-        <input type="text" id="year" placeholder="Year"><br><br>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-input" type="password" id="password" placeholder="Create a strong password" autocomplete="new-password">
+        </div>
 
-        <input type="text" id="careerGoal"
-               placeholder="Career Goal"><br><br>
+        <div class="form-group">
+          <label class="form-label" for="careerGoal">Career goal</label>
+          <input class="form-input" type="text" id="careerGoal" placeholder="e.g. Software Engineer at Google">
+        </div>
 
-        <button onclick="registerUser()">
-            Register
-        </button>
+        <button class="btn btn-primary" onclick="registerUser()" style="width:100%; justify-content:center; font-size:15px; padding:12px; margin-top:8px;">Create Account →</button>
+
+        <div class="form-footer" style="margin-top:16px;">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+      </div>
 
     </div>
+  </div>
 
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

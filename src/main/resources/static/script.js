@@ -63,10 +63,11 @@ async function loadResume() {
     const data = await response.text();
 
     const box = document.getElementById("resume");
+    const loader = document.getElementById("loadingResume");
 
     box.innerText = data;
-
     box.style.display = "block";
+    if (loader) loader.style.display = "none";
 }
 
 async function loadDsa() {
@@ -79,10 +80,11 @@ async function loadDsa() {
     const data = await response.text();
 
     const box = document.getElementById("dsa");
+    const loader = document.getElementById("loadingDsa");
 
     box.innerText = data;
-
     box.style.display = "block";
+    if (loader) loader.style.display = "none";
 }
 
 async function loadInterview() {
@@ -95,30 +97,19 @@ async function loadInterview() {
     const data = await response.text();
 
     const box = document.getElementById("interview");
+    const loader = document.getElementById("loadingInterview");
 
     box.innerText = data;
-
     box.style.display = "block";
+    if (loader) loader.style.display = "none";
 }
 
 async function loadCareer() {
 
     const userId = getUserId();
 
-    const roadmapBox =
-        document.getElementById("career");
-
-        roadmapBox.innerHTML = `
-        Generating Your AI Career Roadmap...
-        
-        Analyzing:
-        Academic Year
-        Career Goal
-        Skills
-        Current Level
-        
-        Please wait...
-        `;
+    const roadmapBox = document.getElementById("career");
+    const loader = document.getElementById("loadingCareer");
 
     try {
 
@@ -128,11 +119,15 @@ async function loadCareer() {
         const data = await response.text();
 
         roadmapBox.innerText = data;
+        roadmapBox.style.display = "block";
+        if (loader) loader.style.display = "none";
 
     } catch (error) {
 
         roadmapBox.innerText =
             "❌ Failed to generate roadmap. Please try again.";
+        roadmapBox.style.display = "block";
+        if (loader) loader.style.display = "none";
 
         console.error(error);
     }
@@ -151,8 +146,26 @@ async function loadUserName() {
 }
 window.onload = function() {
 
-    const page =
-        window.location.pathname;
+    const page = window.location.pathname;
+    if (
+        page.includes("dashboard.html") ||
+        page.includes("resume.html") ||
+        page.includes("dsa.html") ||
+        page.includes("interview.html") ||
+        page.includes("roadmap.html")
+    ) {
+
+        const userId = localStorage.getItem("userId");
+
+        if (!userId) {
+
+            alert("Please login first");
+
+            window.location.href = "login.html";
+
+            return;
+        }
+    }
 
     if (page.includes("dashboard.html")) {
         loadUserName();
@@ -173,7 +186,7 @@ window.onload = function() {
     if (page.includes("roadmap.html")) {
         loadCareer();
     }
-}
+};
 async function saveProfile() {
 
     try {
@@ -268,4 +281,32 @@ async function loginUser() {
 
         alert("Invalid Email or Password");
     }
+}
+async function uploadResume() {
+
+    const file =
+        document.getElementById("resumeFile").files[0];
+
+    if (!file) {
+        alert("Please select a PDF");
+        return;
+    }
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    const response = await fetch(
+        "/api/auth/resume/upload",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+    const result = await response.text();
+
+    const el = document.getElementById("resumeResult");
+    el.innerText = result;
+    el.style.display = "block";
 }
